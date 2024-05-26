@@ -18,7 +18,6 @@ orders as (
 
 joined as (
     select 
-        left(orders.order_date, 4) as year,
         orders.order_id,
         attributed_marketing_channel.marketing_channel,
         orders.amount,
@@ -33,7 +32,6 @@ joined as (
 
 final as (
     select
-        year, -- not necessary as every order is 2018, but can be grouped to give an impression about the channels development
         marketing_channel,
         count(distinct order_id) as orders_count, -- number of orders achieved per channel
         count(distinct customer_id) as customers_count, -- number of distinct customers per channel
@@ -43,11 +41,12 @@ final as (
         avg(markering_profit) as avg_marketing_profit -- avg marketing profit per channel
 
     from joined
-    group by year, marketing_channel
+    group by marketing_channel
 )
 
 -- assuming marketing channel cost is per sale
 -- other options
 -- status set to completed - not necessary as a return is assumed to say more about the products than the sale
+-- group by year to see development - but only 2018 orders here
 
 select * from final
