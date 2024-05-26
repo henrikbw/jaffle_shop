@@ -14,7 +14,7 @@ orders as (
 
     select * from {{ ref('orders') }}
 
-)
+),
 
 joined as (
     select 

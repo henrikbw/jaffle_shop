@@ -22,7 +22,7 @@ customer_orders as (
         customer_id,
         min(order_date) as first_order,
         max(order_date) as most_recent_order,
-        max(case when status = 'completed' then order_date else null end) as most_recent_completed_order
+        max(case when status = 'completed' then order_date else null end) as most_recent_completed_order,
         count(order_id) as number_of_orders
     from orders
 
