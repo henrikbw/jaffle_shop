@@ -20,9 +20,9 @@ customer_orders as (
 
         select
         customer_id,
-
         min(order_date) as first_order,
         max(order_date) as most_recent_order,
+        max(case when status = 'completed' then order_date else null end) as most_recent_completed_order
         count(order_id) as number_of_orders
     from orders
 
@@ -53,6 +53,7 @@ final as (
         customers.last_name,
         customer_orders.first_order,
         customer_orders.most_recent_order,
+        customer_orders.most_recent_completed_order,
         customer_orders.number_of_orders,
         customer_payments.total_amount as customer_lifetime_value
 
