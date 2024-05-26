@@ -18,12 +18,12 @@ orders as (
 
 joined as (
     select 
-        year(order.order_date) as year,
-        order.order_id,
+        year(orders.order_date) as year,
+        orders.order_id,
         attributed_marketing_channel.marketing_channel,
-        order.amount,
+        orders.amount,
         marketing_channel_cost.marketing_channel_cost,
-        order.amount - marketing_channel_cost.marketing_channel_cost as marketing_profit -- assuming marketing_channel_cost is per order
+        orders.amount - marketing_channel_cost.marketing_channel_cost as marketing_profit -- assuming marketing_channel_cost is per order
     from orders
     left join attributed_marketing_channel
         on orders.order_id = attributed_marketing_channel.order_id
