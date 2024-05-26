@@ -18,7 +18,7 @@ orders as (
 
 joined as (
     select 
-        year(orders.order_date) as year,
+        left(orders.order_date, 4) as year,
         orders.order_id,
         attributed_marketing_channel.marketing_channel,
         orders.amount,
