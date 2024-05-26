@@ -6,8 +6,8 @@ with source as (
 
 renamed as (
     select
-        marketing_channel
-        cost
+        marketing_channel,
+        cost as marketing_channel_cost
     from source
 )
 
