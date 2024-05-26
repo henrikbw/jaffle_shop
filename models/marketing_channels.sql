@@ -36,7 +36,7 @@ final as (
         year, -- not necessary as every order is 2018, but can be grouped to give an impression about the channels development
         marketing_channel,
         count(distinct order_id) as orders_count, -- number of orders achieved per channel
-        count(distinct customer_id) as customers_count -- number of distinct customers per channel
+        count(distinct customer_id) as customers_count, -- number of distinct customers per channel
         sum(amount) as total_order_amount, -- revenue per channel 
         sum(marketing_channel_cost) as total_marketing_cost, -- marketing cost per channel
         sum(marketing_profit) as total_marketing_profit, -- total profit when marketing cost is subtracted per channel
