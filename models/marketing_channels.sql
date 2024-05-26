@@ -19,6 +19,7 @@ orders as (
 joined as (
     select 
         orders.order_id,
+        orders.customer_id,
         attributed_marketing_channel.marketing_channel,
         orders.amount,
         marketing_channel_cost.marketing_channel_cost,
